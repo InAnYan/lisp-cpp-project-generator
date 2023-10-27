@@ -1,0 +1,13 @@
+(namespace "Lox"
+           (namespace "Compiling"
+                      (klass "Token")
+                      (klass "Compiler"))
+           (namespace "Interpreter"
+                      (namespace "Exceptions"
+                                 (exception "StackOverflow"
+                                            ("uint32_t" "line")))
+                      (klass "VirtualMachine"))
+           (namespace "DataStructures"
+                      (klass "Chunk")
+                      (klass "LineArray")
+                      (klass "HashTable")))
