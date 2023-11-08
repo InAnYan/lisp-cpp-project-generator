@@ -221,9 +221,9 @@
 
 (defun make-header-guard-text (cls)
   (join "_" 
-               (mapcar #'string-upcase 
-                       (append (klass-namespaces cls)
-                               (list (klass-name cls) "hpp")))))
+        (mapcar #'string-upcase 
+                (append (klass-namespaces cls)
+                        (list (klass-name cls) "hpp")))))
 
 
 (defun make-namespaces (namespaces text)
@@ -301,7 +301,7 @@
   (make-header-guard (make-klass :namespaces namespaces
                                  :name name)
                      (make-namespaces (reverse namespaces) nil)))
-  
+
 (defun create-class-files (cls)
   (ensure-directories-exist (make-folder-path (klass-namespaces cls)))
   (with-open-file (header-file (make-klass-header-file-path cls)
@@ -318,12 +318,12 @@
 (defun create-simple-header-file (namespaces name)
   (ensure-directories-exist (make-folder-path namespaces))
   (with-open-file (header-file (make-klass-header-file-path (make-klass :name name
-                                                                  :namespaces namespaces))
+                                                                        :namespaces namespaces))
                                :direction :output
                                :if-does-not-exist :create
                                :if-exists nil)
     (format header-file "~a" (lines-to-string (make-simple-header-file namespaces name)))))
-  
+
 (defun create-excpetion-files (ex)
   (ensure-directories-exist (make-folder-path (exception-namespaces ex)))
   (with-open-file (header-file (make-klass-header-file-path ex)
@@ -337,7 +337,7 @@
                                :if-exists nil)
     (format source-file "~a" (lines-to-string (make-exception-source-file ex)))))
 
-  
+
 (defun create-pair-files (cls)
   (ensure-directories-exist (make-folder-path (klass-namespaces cls)))
   (with-open-file (header-file (make-klass-header-file-path cls)

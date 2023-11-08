@@ -11,3 +11,4 @@
                       (klass "Chunk")
                       (klass "LineArray")
                       (klass "HashTable")))
+(namespace "SOme")
