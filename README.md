@@ -1,17 +1,17 @@
 # C++ project generator
-A simple program written in Lisp that generates C++ project file.
+A simple program written in Lisp that generates C++ project files.
 
 ## Usage:
 ```sh
 sbcl --script cpp-project-generator.lisp path
 ```
-Where: path - path to the description of the project.
+Where: `path` - path to the description of the project.
 
 ## Grammar of description file
 ```
 node
 ```
-Where node is one of the following:
+Where `node` is one of the following:
 ```
 (namespace NAME  ; NAME is a string.
   node*)
@@ -23,9 +23,9 @@ or
 or
 ```
 (exception NAME  ; NAME is a string.
-  vars*)
+  var*)
 ```
-Where vars is:
+Where `var` is:
 ```
 (TYPE NAME)  ; TYPE and NAME are strings.
 ```
@@ -33,12 +33,12 @@ Where vars is:
 ## Generation of project tree
 - Every `namespace` corresponds to a new folder and a C++ namespace.
 - Every `klass` corresponds to two files in the same directory: header (`.hpp`) and implementation (`.cpp`). The class will have namespaces as specified in the description.
-- Every `exception` is like a `klass` but it is tuned to exception. It generates appropriate getters and setters for specific fields. For more information try to run `example.lisp` file.
+- Every `exception` is like a `klass` but it is tuned to exception. It generates appropriate getters and setters for user-defined fields. For more information try running `example.lisp` file.
 
 ## Files:
 - `cpp-project-generator.lisp`: main executable.
 - `files-generator.lisp`: functions that generate files.
-- `macro-reader.lisp`: transforms description files into correct Lisp program that calles functions from `files-generator.lisp`.
+- `macro-reader.lisp`: transforms description files into correct Lisp program that calls functions from `files-generator.lisp`.
 
 ## Extra
 This repository contatins file `start-project.lisp` which initializes an empty C++ project.
